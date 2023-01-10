@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Interpreter_C++"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Interpreter_C++">
+				<Option output="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Interpreter_C++.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/../HaverfordCS/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/../../../../lib/../include/w32api"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 Interpreter_C++"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Interpreter_C++/fast">
+				<Option output="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Interpreter_C++.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/../HaverfordCS/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/../../../../lib/../include/w32api"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 Interpreter_C++/fast"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/Dictionary.cpp">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/Dictionary.h">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/Tree.cpp">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/Tree.h">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/TreeHelpers.cpp">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/TreeHelpers.h">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/TreeHelpersHOF.cpp">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/eval.cpp">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/eval.h">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/main.cpp">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/parser.cpp">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/parser.h">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/scanner-regexp.cpp">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/scanner-regexp.h">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/scanner.cpp">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/scanner.h">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/scannerDemo.cpp">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/scannerDemo.h">
+			<Option target="Interpreter_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/CLionProjects/Interpreter-C/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

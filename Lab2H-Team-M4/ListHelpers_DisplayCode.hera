@@ -1,0 +1,59 @@
+//
+//  Editor of this file: Provided in starter files
+//
+
+
+// Use calls to tiger standard library functions PRINT and PRINTINT,
+//   to print a list in Scheme/Racket format, e.g., (list 2 3 5 7 11)
+LABEL(LIST_DISPLAY_CODE)
+    // minimum standard "preamble" for a function that calls other functions:
+    //   save PC_ret and FP_alt (as per Figure 7.9 of HERA docs v. 2.4.0)
+    INC(SP, 2)
+    STORE(PC_ret, 0,FP)
+    STORE(FP_alt, 1,FP)
+
+    INC(SP, 1)
+    STORE(R4, 2,FP) // also keep R4 safe, I want to use it...
+
+    // body of "list-display-code" function:
+    MOVE(R4, R1)	// R4 will be "current" list
+    SET(R1, LIST_DISPLAY_CODE_START)
+    MOVE(FP_alt, SP)    // standard call sequence, start with new frame above this one
+    CALL(FP_alt, PRINT)
+    
+  LABEL(LIST_DISPLAY_CODE_CHECK_FOR_EMPTY)
+    MOVE(R1, R4)	// pass current list, i.e., R4 as a parameter to "empty?"
+    MOVE(FP_alt, SP)    // standard call sequence, start with new frame above this one
+    CALL(FP_alt, LIST_EMPTY)
+    FLAGS(R1)		// if result is true, i.e. nonzero, the "Z" flag will be off
+  BNZ(LIST_DISPLAY_CODE_DONE)
+    SET(R1, LIST_DISPLAY_CODE_SEPARATOR)
+    MOVE(FP_alt, SP)    // standard call sequence, start with new frame above this one
+    CALL(FP_alt, PRINT)
+    MOVE(R1, R4)	// pass current list, i.e., R4 as a parameter to "first"
+    MOVE(FP_alt, SP)    // standard call sequence, start with new frame above this one
+    CALL(FP_alt, LIST_FIRST)
+    MOVE(FP_alt, SP)    // standard call sequence, start with new frame above this one
+    CALL(FP_alt, PRINTINT)
+
+    MOVE(R1, R4)	// pass current list, i.e., R4 as a parameter to "rest"
+    MOVE(FP_alt, SP)    // standard call sequence, start with new frame above this one
+    CALL(FP_alt, LIST_REST)
+    MOVE(R4, R1)  	// copy the result of "rest" into R4, the current list
+  BR(LIST_DISPLAY_CODE_CHECK_FOR_EMPTY)
+
+  LABEL(LIST_DISPLAY_CODE_DONE)
+    SET(R1, LIST_DISPLAY_CODE_END)
+    MOVE(FP_alt, SP)    // standard call sequence, start with new frame above this one
+    CALL(FP_alt, PRINT)
+
+
+    LOAD(R4, 2,FP)
+    DEC(SP, 1)
+
+// minimum standard "postamble" for a function that calls other functions:
+    //   restore PC_ret and FP_alt (as per Figure 7.9 of HERA docs v. 2.4.0)
+    LOAD(PC_ret, 0,FP)
+    LOAD(FP_alt, 1,FP)
+    DEC(SP, 2)
+RETURN(FP_alt, PC_ret)

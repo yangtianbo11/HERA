@@ -1,0 +1,25 @@
+Having background experience as a Java programmer, I found that learning to code in C++ was a lot easier
+than I initially expected. It helped a lot that the syntax for the majority of loops, if statements, and
+declarations in C++ resemble those Java. These similarities made it quite easy to pick up the language a
+begin writing simple functions. However, I am also aware that despite the syntax similarities, there are
+huge differences in what is happening in the background and in how the system executes C++ code versus Java
+code. For example, assigning a variable to an object means that the variable refers to the object in Java,
+while the variable becomes the name of the object in C++. This can lead to huge differences in the way the
+code is executed in certain situations. I consider learning a language the combined process of learning to
+code with it and understanding its internal workings. Although, the latter is much less intuitive for me, I
+still find it a lot easier to understand it now than when I learned my first programming language. Learning
+a new "idiom", or as I prefer to call it, a new "mechanic" in an already familiar language really depends
+on what the idiom is. I akin it to learning a new word or phrase. Sometimes, it is very simple to
+understand, such as higher order functions. Other times, it can be nauseating at first, but gradually
+becomes more comfortable as I get more familiar with the syntax, such as with pure functional programming.
+One time, it feels so much more confusing than my previous method of doing things, and to this day, I still
+use the for loop 90% of the time instead of recursion. Although I think that learning a new idiom is on
+average, much easier than an entire new language, I do believe that the more languages you've already
+learned, the easier it is to pick up a new one. This is on top of the fact that learning some idioms such
+as pure functional programming essentially feels like learning a new language for people with no prior
+experience.
+Update post lab 1R: I still agree with my previous statement. I would say that the difficulty of learning
+a new language heavily depends on how similar it is to languages you already know. For example, C++ was
+much easier for me to pick up than Racket because the syntax of C++ is more similar to Java. Object
+orientated programming was also much harder to get used to than I thought, but like my hunch, I became
+more comfortable with it the longer I programmed with Racket.

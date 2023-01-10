@@ -1,0 +1,73 @@
+(* (+ 2 5) (+ (+ 1 (* 2 1)) (+ 2 1)))
+
+
+
+(* (- 4 3) (+ 2 1)) <EOF>
+(+ 1 #t) <EOF>
+#t <EOF>
+#F <EOF>
+(* #T 6) <EOF>
+(- (+ 2 3) #f) <EOF>
+
+(= 1 2) <EOF>
+(= 5 5) <EOF>
+(= (+ 2 4) 6) <EOF>
+(= (- 8 2) (* 2 3)) <EOF>
+(+ 3 (= 5 7)) <EOF>
+
+(<= 1 2) <EOF>
+(<= 4 2) <EOF>
+(<= 5 5) <EOF>
+(<= (+ 2 4) 6) <EOF>
+(<= (- 8 2) (* 2 3)) <EOF>
+(+ 3 (<= 5 7)) <EOF>
+
+(>= 1 2) <EOF>
+(>= 90 10) <EOF>
+(>= 5 5) <EOF>
+(>= (+ 2 4) 6) <EOF>
+(>= (- 8 2) (* 2 3)) <EOF>
+(+ 3 (>= 5 7)) <EOF>
+
+(if #T 9 3) <EOF>
+(if (>= 2 3) 6 7) <EOF>
+(if (<= 500 639) #t #F) <EOF>
+(if (= 7 2) #t #F) <EOF>
+(if 5 4 3) <EOF>
+(if #f 3 #t) <EOF>
+(if (= 3 3) (>= 3 4) (* 6 5)) <EOF>
+(if (>= (getint) 0) #t #f) <EOF>
+(if (= 2 3) 5 (+ 1 1))<EOF>
+(if (<= 2 3) (* 6 2) (+ 1 1))<EOF>
+(if #t #f #t)<EOF>
+
+(let* ( (x 6) (y (+ 2 5)) ) (* x y)) <EOF>
+(let* ( (x 1) (y 2) ) (+ x y)) <EOF>
+(let* ()(+ 2 2))<EOF>
+(let* ((x 1))(+ x 2))<EOF>
+(let* ((x 1)(y 5))(+ x y))<EOF>
+(let* ((x 1)(y 5)(s 4)(t 7))(+ (* x y) (- t s)))<EOF>
+(let* ((x 1) (y 2) (z 3))(if(= y 2) (+ x z)(- x z)))<EOF>
+(let* ((x 1)(y 5))(if(= x 2) (+ 1 1)(- 1 1)))<EOF>
+(let* ((x 6)(y 2))(if (= y 2)(let* ((z 4))(+ z x))(+ 6 8)))<EOF>
+
+
+(* 6 4)<EOF> #expecting 24
+(+ 9 2)<EOF> #expecting 11
+(- 4 3)<EOF> #expecting 1
+(* (+ 6 9) 15)<EOF> #expecting 225
+(+ (* 2 3) (- 9 6))<EOF> #expecting 9
+(= 2 2)<EOF> #expecting #t
+(>= 5 2)<EOF> #expecting #t
+(<= 4 3)<EOF> #expecting #f
+(if (= 2 3) 5 (+ 1 1))<EOF> #expecting 2
+(if (<= 2 3) (* 6 2) (+ 1 1))<EOF> #expecting 12
+(if #t #f #t)<EOF> #expecting #f
+(let()(+ 2 2))<EOF> #expecting 4
+(let([x 1])(+ x 2))<EOF> #expecting 3
+(let([x 1][y 5])(+ x y))<EOF> #expecting 6
+(let([x 1][y 5][s 4][t 7])(+ (* x y) (- t s)))<EOF> #expecting 8
+(let([x 1] [y 2] [z 3])(if(= y 2) (+ x z)(- x z)))<EOF> #expecting 4
+(let([x 1][y 5])(if(= x 2) (+ 1 1)(- 1 1)))<EOF> #expecting 0
+(let([x 6][y 2])(if (= y 2)(let ([z 4])(+ z x))(+ 6 8)))<EOF> #expecting 10
+

@@ -1,0 +1,11 @@
+(if #T 9 3) <EOF>
+(if (>= 2 3) 6 7) <EOF>
+(if (<= 500 639) #t #F) <EOF>
+(if (= 7 2) #t #F) <EOF>
+(if 5 4 3) <EOF>
+(if #f 3 #t) <EOF>
+(if (= 3 3) (>= 3 4) (* 6 5)) <EOF>
+(if (>= (getint) 0) #t #f) <EOF>
+(if (= 2 3) 5 (+ 1 1))<EOF>
+(if (<= 2 3) (* 6 2) (+ 1 1))<EOF>
+(if #t #f #t)<EOF>

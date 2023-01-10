@@ -1,0 +1,139 @@
+WARN_HERA_2_3_DIFFS="" HERA_C_DIR=. HERA_C_CPP_DEFS=-DHERA_C_NO_LIB_NEEDED=1 ./HERA-C-Run HERA_nolib-test.hera | tee HERA_nolibneeded-test.out
+
+Welcome to the HERA-C HERA 2.4.0 simulator, October 2018 edition.
+  Please report bugs to davew@cs.haverford.edu
+
+Starting HERA program at HERA_main() ...
+
+
+
+HERA program is done.
+Registers:
+           r1 = 0x0006 = 06 = 6
+           r2 = 0x0007 = 07 = 7
+           r3 = 0x002a = 052 = 42 = '*'
+           r4 = 0x0000 = 00 = 0
+           r5 = 0x0000 = 00 = 0
+           r6 = 0x0000 = 00 = 0
+           r7 = 0x0000 = 00 = 0
+           r8 = 0x0000 = 00 = 0
+           r9 = 0x0000 = 00 = 0
+          r10 = 0x0000 = 00 = 0
+
+Flags: carry-block=TRUE  C=FALSE V=FALSE Z=FALSE S=FALSE
+
+Stack is (empty)
+WARN_HERA_2_3_DIFFS="" HERA_C_DIR=. ./HERA-C-Run HERA_nolib-test.cc | tee HERA_nolib-test.out
+
+Welcome to the HERA-C HERA 2.4.0 simulator, October 2018 edition.
+  Please report bugs to davew@cs.haverford.edu
+
+Starting HERA program at HERA_main() ...
+
+
+
+HERA program is done.
+Registers:
+           r1 = 0x0006 = 06 = 6
+           r2 = 0x0007 = 07 = 7
+           r3 = 0x002a = 052 = 42 = '*'
+           r4 = 0x0000 = 00 = 0
+           r5 = 0x0000 = 00 = 0
+           r6 = 0x0000 = 00 = 0
+           r7 = 0x0000 = 00 = 0
+           r8 = 0x0000 = 00 = 0
+           r9 = 0x0000 = 00 = 0
+          r10 = 0x0000 = 00 = 0
+
+Flags: carry-block=TRUE  C=FALSE V=FALSE Z=FALSE S=FALSE
+
+Stack is (empty)
+WARN_HERA_2_3_DIFFS="" HERA_C_DIR=. ./HERA-C-Run HERA_nolib-test.hera | tee HERA_nolib-test-hera.out
+
+Welcome to the HERA-C HERA 2.4.0 simulator, October 2018 edition.
+  Please report bugs to davew@cs.haverford.edu
+
+Starting HERA program at HERA_main() ...
+
+
+
+HERA program is done.
+Registers:
+           r1 = 0x0006 = 06 = 6
+           r2 = 0x0007 = 07 = 7
+           r3 = 0x002a = 052 = 42 = '*'
+           r4 = 0x0000 = 00 = 0
+           r5 = 0x0000 = 00 = 0
+           r6 = 0x0000 = 00 = 0
+           r7 = 0x0000 = 00 = 0
+           r8 = 0x0000 = 00 = 0
+           r9 = 0x0000 = 00 = 0
+          r10 = 0x0000 = 00 = 0
+
+Flags: carry-block=TRUE  C=FALSE V=FALSE Z=FALSE S=FALSE
+
+Stack is (empty)
+WARN_HERA_2_3_DIFFS="" HERA_C_DIR=. ./HERA-C-Run HERA_main-test.cc | tee HERA_main-test.out
+
+Welcome to the HERA-C HERA 2.4.0 simulator, October 2018 edition.
+  Please report bugs to davew@cs.haverford.edu
+
+Starting HERA program at HERA_main() ...
+
+Just did two double-precision adds into R1/R2:
+           R1 = 0x000f = 017 = 15
+           R2 = 0x4240 = 041100 = 16960
+Just did double-precision subtract into R7/R8:
+           R7 = 0xfff0 = 0177760 = -16 = 65520
+           R8 = 0xbdc0 = 0136700 = -16960 = 48576
+The double-precision sum is 15 16960
+The double-precision difference is -16 -16960
+
+HERA program is done.
+Registers:
+           r1 = 0xbdc0 = 0136700 = -16960 = 48576
+           r2 = 0x4240 = 041100 = 16960
+           r3 = 0x0000 = 00 = 0
+           r4 = 0x000f = 017 = 15
+           r5 = 0x4240 = 041100 = 16960
+           r6 = 0xbdc0 = 0136700 = -16960 = 48576
+           r7 = 0xfff0 = 0177760 = -16 = 65520
+           r8 = 0xbdc0 = 0136700 = -16960 = 48576
+           r9 = 0x0000 = 00 = 0
+          r10 = 0x000f = 017 = 15
+
+Flags: carry-block=FALSE C=FALSE V=FALSE Z=FALSE S=TRUE 
+
+Stack is (empty)
+WARN_HERA_2_3_DIFFS="" HERA_C_DIR=. ./HERA-C-Run HERA_main-test-stacklib.cc | tee HERA_main-test-stacklib.out
+
+Welcome to the HERA-C HERA 2.4.0 simulator, October 2018 edition.
+  Please report bugs to davew@cs.haverford.edu
+
+Starting HERA program at HERA_main() ...
+
+Just did two double-precision adds into R1/R2:
+           R1 = 0x000f = 017 = 15
+           R2 = 0x4240 = 041100 = 16960
+Just did double-precision subtract into R7/R8:
+           R7 = 0xfff0 = 0177760 = -16 = 65520
+           R8 = 0xbdc0 = 0136700 = -16960 = 48576
+The double-precision sum is 15 16960
+The double-precision difference is -16 -16960
+
+HERA program is done.
+Registers:
+           r1 = 0x000f = 017 = 15
+           r2 = 0x4240 = 041100 = 16960
+           r3 = 0x0000 = 00 = 0
+           r4 = 0x0000 = 00 = 0
+           r5 = 0x0000 = 00 = 0
+           r6 = 0x0000 = 00 = 0
+           r7 = 0xfff0 = 0177760 = -16 = 65520
+           r8 = 0xbdc0 = 0136700 = -16960 = 48576
+           r9 = 0x0000 = 00 = 0
+          r10 = 0x000f = 017 = 15
+
+Flags: carry-block=FALSE C=TRUE  V=FALSE Z=TRUE  S=FALSE
+
+Stack is (empty)

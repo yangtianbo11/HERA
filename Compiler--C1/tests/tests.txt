@@ -1,0 +1,185 @@
+//(if (= (getint) 42) 1 2) <EOF>
+CBON()
+MOVE(FP_alt, SP)
+CALL(FP_alt,getint)
+MOVE(R10, R1)
+SET(R9, 42)
+CMP(R10,R9)
+BNZ(ELSE)
+SET(R10, 1)
+BR(END)
+LABEL(ELSE)
+SET(R10, 2)
+LABEL(END)
+
+//(if (= (getint) 42) #t 1) <EOF>
+TypeError in matchEInParens: if token operands are not having correct types
+Process finished with exit code 3
+//#t <EOF>
+CBON()
+SET(R10, 1)
+
+//(if #t 2 3) <EOF>
+CBON()
+SET(R10, 1)
+SET(R10, 2)
+BR(END)
+LABEL(ELSE)
+SET(R10, 3)
+LABEL(END)
+
+//(if (= 4 5) 2 3) <EOF>
+
+CBON()
+SET(R10, 4)
+SET(R9, 5)
+CMP(R10,R9)
+BNZ(ELSE)
+SET(R10, 2)
+BR(END)
+LABEL(ELSE)
+SET(R10, 3)
+LABEL(END)
+
+//(let* ((x 1)) (+ x 2)) <EOF>
+CBON()
+INC(SP, 1)
+SET(R10, 1)
+STORE(R10, 0, FP)
+LOAD(R10, 0, FP)
+SET(R9, 2)
+ADD(R10, R10,R9)
+DEC(SP, 1)
+
+
+
+//(let* ((a 1)(b 2)) (+ a b)) <EOF>
+CBON()
+INC(SP, 2)
+SET(R10, 2)
+STORE(R10, 1, FP)
+SET(R9, 1)
+STORE(R9, 0, FP)
+LOAD(R10, 1, FP)
+LOAD(R9, 0, FP)
+ADD(R10, R10,R9)
+DEC(SP, 2)
+
+
+
+//(* 3 4 5) <EOF>
+
+
+//(if #t 2 3) <EOF>
+CBON()
+SET(R10, 1)
+SET(R10, 2)
+BR(END)
+LABEL(ELSE)
+SET(R10, 3)
+LABEL(END)
+
+
+
+//(define x #t) <EOF>
+CBON()
+SET(R10, 1)
+
+//(define x 3) <EOF>
+CBON()
+SET(R10, 3)
+
+//(define x (= 3 4)) <EOF>
+CBON()
+SET(R10, 3)
+SET(R9, 4)
+CMP(R10,R9)
+BNZ(ELSE)
+
+//(if #f 2 3) <EOF>
+CBON()
+SET(R10, 0)
+BR(ELSE)
+SET(R10, 2)
+BR(END)
+LABEL(ELSE)
+SET(R10, 3)
+LABEL(END)
+
+//(if (= 4 5) 2 3) <EOF>
+
+CBON()
+SET(R10, 4)
+SET(R9, 5)
+CMP(R10,R9)
+BNZ(ELSE)
+SET(R10, 2)
+BR(END)
+LABEL(ELSE)
+SET(R10, 3)
+LABEL(END)
+
+//(let* ((a 1)(b 2)) (+ a b)) <EOF>
+
+CBON()
+INC(SP, 2)
+SET(R10, 2)
+STORE(R10, 1, FP)
+SET(R9, 1)
+STORE(R9, 0, FP)
+LOAD(R10, 1, FP)
+LOAD(R9, 0, FP)
+ADD(R10, R10,R9)
+DEC(SP, 2)
+
+//(let* ((x 1)) (+ x 2)) <EOF>
+
+
+
+
+
+
+//(let* ((x 1)(y 5)(s 4)(t 7))(+  (- t s) (* x y)))<EOF>
+// print out 8
+
+CBON()
+INC(SP, 4)
+SET(R10, 7)
+STORE(R10, 3, FP)
+SET(R9, 4)
+STORE(R9, 2, FP)
+SET(R8, 5)
+STORE(R8, 1, FP)
+SET(R7, 1)
+STORE(R7, 0, FP)
+LOAD(R10, 3, FP)
+LOAD(R9, 2, FP)
+LOAD(R8, 1, FP)
+LOAD(R7, 0, FP)
+MUL(R10, R10,R9)
+SUB(R9, R9,R8)
+ADD(R10, R10,R9)
+DEC(SP, 4)
+
+//(let* ((x 1)(y 5))(if(= x 2) (+ 1 1)(- 1 1)))<EOF>
+CBON()
+INC(SP, 2)
+SET(R10, 5)
+STORE(R10, 1, FP)
+SET(R9, 1)
+STORE(R9, 0, FP)
+LOAD(R10, 1, FP)
+LOAD(R9, 0, FP)
+SET(R9, 2)
+CMP(R10,R9)
+BNZ(ELSE)
+SET(R10, 1)
+SET(R9, 1)
+ADD(R10, R10,R9)
+BR(END)
+LABEL(ELSE)
+SET(R10, 1)
+SET(R9, 1)
+SUB(R10, R10,R9)
+LABEL(END)
+DEC(SP, 2)

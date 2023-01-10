@@ -1,0 +1,30 @@
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: /cygdrive/c/Users/yangt/CLionProjects/Compiler--C1/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make.exe cmTC_b1026/fast && make: *** No rule to make target 'cmTC_b1026/fast'.  Stop.
+
+
+
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: /cygdrive/c/Users/yangt/CLionProjects/Compiler--C1/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make.exe cmTC_bde0c/fast && make: *** No rule to make target 'cmTC_bde0c/fast'.  Stop.
+
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: /cygdrive/c/Users/yangt/CLionProjects/Compiler--C1/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make.exe cmTC_e3805/fast && make: *** No rule to make target 'cmTC_e3805/fast'.  Stop.
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: /cygdrive/c/Users/yangt/CLionProjects/Compiler--C1/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make.exe cmTC_0d6b5/fast && make: *** No rule to make target 'cmTC_0d6b5/fast'.  Stop.
+
+
+

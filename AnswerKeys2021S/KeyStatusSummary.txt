@@ -1,0 +1,15 @@
+Status of keys in this project:
+
+* Lab 2C: Dictionary-C++ has a working Dictionary class, complete with enhanced test-Dictionary.cpp;
+      	  The calculator is mostly complete, and I've tested it some, though the "?" operation would
+      	  not get full credit because it prints duplicates and also doesn't make sense to users who
+	  aren't programmers.
+	  
+* Lab 2R: Dictionary-Racket similarly has a working dictionary and calculator except for "?";
+      	  It also lacks any enhancements of the tests, though those from C++ could be added.
+	  Note that it uses "define-contract" to check the validity of any dictionary before
+	  building a non-trivial dictionary, and before printing, and also it has a dictionary
+	  to provide one expression (rather than five) for the five operations +, -, *, ==, <=.
+
+
+

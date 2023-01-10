@@ -1,0 +1,9 @@
+(let* ( (x 6) (y (+ 2 5)) ) (* x y)) <EOF>
+(let* ( (x 1) (y 2) ) (+ x y)) <EOF>
+(let* ()(+ 2 2))<EOF>
+(let* ((x 1))(+ x 2))<EOF>
+(let* ((x 1)(y 5))(+ x y))<EOF>
+(let* ((x 1)(y 5)(s 4)(t 7))(+ (* x y) (- t s)))<EOF>
+(let* ((x 1) (y 2) (z 3))(if(= y 2) (+ x z)(- x z)))<EOF>
+(let* ((x 1)(y 5))(if(= x 2) (+ 1 1)(- 1 1)))<EOF>
+(let* ((x 6)(y 2))(if (= y 2)(let* ((z 4))(+ z x))(+ 6 8)))<EOF>

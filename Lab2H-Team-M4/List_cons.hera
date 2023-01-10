@@ -1,0 +1,26 @@
+//
+//  Editor of this file:
+//   Xavier DeVore
+//
+
+// Create a cons cell with (R1 R2), return result in R1
+LABEL(LIST_CONS)
+
+    INC(SP, 3)
+    STORE(PC_ret, 0, FP)
+    STORE(FP_alt, 1, FP)
+
+    STORE(R1, 2, FP)
+    MOVE(R1, R2)
+    SET(R1, 2)
+    CALL(FP_alt, malloc)
+    LOAD(R8, 2, FP)
+    STORE(R8, 0, R1)
+    STORE(R2, 1, R1)
+    MOVE(R9, R1)
+
+    LOAD(PC_ret, 0,FP)
+    LOAD(FP_alt, 1,FP)
+    DEC(SP, 3)
+
+RETURN(FP_alt, PC_ret)

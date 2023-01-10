@@ -1,0 +1,12 @@
+//(if (= 4 5) 2 3) <EOF>
+
+CBON()
+SET(R10, 4)
+SET(R9, 5)
+CMP(R10,R9)
+BNZ(ELSE)
+SET(R10, 2)
+BR(END)
+LABEL(ELSE)
+SET(R10, 3)
+LABEL(END)

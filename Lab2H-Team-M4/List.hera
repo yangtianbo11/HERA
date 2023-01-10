@@ -1,0 +1,64 @@
+// List.hera
+//
+//  List functions equivalent to Racket's list (for empty list), cons, empty?, first, rest
+//   (see https://docs.racket-lang.org/reference/pairs.html#%28part._.Additional_.List_.Functions_and_.Synonyms%29 for details)
+//
+//  To keep things organized, we'll try to use
+//    R1..R3  for parameters and return values (and left alone otherwise)
+//    R4..R7  are not changed by a function (either unused, or saved, used, and restored)
+//    R8..R11 for temporary values (code calling these functions should not rely on them)
+//  this is cons istent with both Sections 7.3.2, 7.4, and 7.6 of the HERA 2.4.0 docs,
+//    (as long as the calling code does not rely on Registers 8 .. 11)
+// 
+// NOTE: code for the list _functions_ goes here;
+//       if any data are needed, e.g. strings for error messages,
+//       those go in List-data.hera.
+//
+
+
+/*****************************************************************
+ *                DESIGN DECISIONS ABOUT LISTS:                  *
+ *                                                               *
+ *  This file should only be updated when the group is meeting   *
+ *                                                               *
+ *                                                               *
+ * 1. As in C/C++, we'll use 0 for the null list                 *
+ *    (this makes branches on empty-list easy)                   *
+ *                                                               *
+ * 2. (add more here as needed)                                  *
+ *                                                               *
+ *                                                               *
+ *                                                               *
+ * NOTE: good data abstraction would have us write other code    *
+ *       only in terms of calls to these functions, BUT in the   *
+ *       interest of brevity and performance, we are relying on  *
+ *       (at least) #1 in lots of other places :-(               *
+ *                                                               *
+ *****************************************************************/
+
+
+// Each of these should have an "owner" commented at the start of the file
+#include "List_new_null.hera"
+
+// Start with these, when you do group work
+#include "List_first_rest.hera"
+
+// Then do these together, or split up the work, as long as
+//   everyone contributes, and everyone feels comfortable with each element
+// Return True if R1 represents an empty list, False if non-empty
+
+#include "List_empty.hera"
+
+// List_cons is perhaps the hardest of the core functions,
+//   though some of the helpers might be harder...
+#include "List_cons.hera"
+
+
+
+/// ========== REMOVE THE STUFF BELOW AFTER WRITING ALL THE FUNCTIONS ABOVE ===========
+//LABEL(LIST_UNIMPLEMENTED)
+    //SET(R1, unimplemented)
+    //CALL(FP_alt, print)
+    //SET(R1, 1)
+    //CALL(FP_alt, exit)
+    HALT() // shouldn't get here, but, just in case...

@@ -1,0 +1,16 @@
+//(* (+ 2 5) (+ (+ 1 (* 2 1)) (+ 2 1))) <EOF>
+
+CBON()
+SET(R10, 2)
+SET(R9, 5)
+ADD(R10, R10,R9)
+SET(R9, 1)
+SET(R8, 2)
+SET(R7, 1)
+MUL(R8, R8,R7)
+ADD(R9, R9,R8)
+SET(R8, 2)
+SET(R7, 1)
+ADD(R8, R8,R7)
+ADD(R9, R9,R8)
+MUL(R10, R10,R9)

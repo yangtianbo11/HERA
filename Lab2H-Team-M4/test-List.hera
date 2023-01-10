@@ -1,0 +1,178 @@
+
+	SET(r1, start_test_message)
+	CALL(FP_alt, print) //call print
+
+
+	SET(r7, 0)	 // which test are we on? Print this if there is an error in testing
+	CALL(FP_alt, NEW_NULL_LIST)
+	MOVE(R4, R1)	// Save that null list from R1 into a register that won't be overwritten
+	FLAGS(R4)
+	BZ(OK_0)	//   ...and, if the zero flag is _on_ (after that FLAGS step), we're o.k. so far
+	CALL(FP_alt, TESTING_ERROR)
+	LABEL(OK_0)
+
+	INC(R7, 1)  	// R7 is the number of tests we're past
+	MOVE(R1, R4)	// R4 is our null list, from above
+	CALL(FP_alt, LIST_EMPTY)
+	FLAGS(R1)	// check whether result was True, i.e. non-zero, by setting flags and ...
+	BNZ(OK_1)	//   skipping to the next "OK" point if non-zero
+	CALL(FP_alt, TESTING_ERROR)
+	LABEL(OK_1)
+
+	INC(R7, 1)  	// R7 is the number of tests we're past
+	SET(R1, 17)
+	MOVE(R2, R4)	// R4 is our null list, from above
+	CALL(FP_alt, LIST_CONS)  // (cons 17 R4) should make (list 17)
+	MOVE(R5, R1)	// capture that list with only 17 here
+
+	CALL(FP_alt, LIST_EMPTY) // R1 is still (cons 17 (list)), so should NOT be empty
+	FLAGS(R1)
+	BZ(OK_2)	//   skipping to the next "OK" point if zero, i.e., FALSE
+	CALL(FP_alt, TESTING_ERROR)
+	LABEL(OK_2)
+
+	INC(R7, 1)  	// R7 is the number of tests we're past
+	MOVE(R1, R5)	// R5 is (list 17)
+	CALL(FP_alt, LIST_FIRST) // ought to get 17, here
+	SET(Rt, 17)
+	CMP(R1, Rt)	// compare 17 to (head (list 17))
+	BZ(OK_3)	//   skipping to the next "OK" point if they are equal, i.e., difference is 0
+	CALL(FP_alt, TESTING_ERROR)
+	LABEL(OK_3)
+
+	INC(R7, 1)  	// R7 is the number of tests we're past
+	MOVE(R1, R5)	// R5 is (list 17)
+	CALL(FP_alt, LIST_REST) // ought to get empty-list, here
+	CALL(FP_alt, LIST_EMPTY)
+	FLAGS(R1)
+	BNZ(OK_4)	//   skipping to the next "OK" point if we got True (non-zero), i.e. empty-list
+	CALL(FP_alt, TESTING_ERROR)
+	LABEL(OK_4)
+
+	INC(R7, 1)  	// R7 is the number of tests we're past
+	SET(R1, 42)
+	MOVE(R2, R5)	// R5 is (cons 17 (list))
+	CALL(FP_alt, LIST_CONS)  // (cons 17 R5) should make (list 42 17)
+	MOVE(R6, R1)	// R6 is (list 42 17)
+	
+	CALL(FP_alt, LIST_FIRST) // ought to get 42, here, since R1 is also (list 42 17)
+	SET(Rt, 42)
+	CMP(R1, Rt)	// compare 42 to (head (list 42 17))
+	BZ(OK_5)	//   skipping to the next "OK" point if they are equal
+	CALL(FP_alt, TESTING_ERROR)
+	LABEL(OK_5)
+
+	INC(R7, 1)  	// R7 is the number of tests we're past
+	MOVE(R1, R6)	// (list 42 17)
+	CALL(FP_alt, LIST_FIRST) // ought to get 42, here
+	SET(Rt, 42)
+	CMP(R1, Rt)	// compare 42 to (head (list 42 17))
+	BZ(OK_6)	//   skipping to the next "OK" point if they are equal
+	CALL(FP_alt, TESTING_ERROR)
+	LABEL(OK_6)
+
+	INC(R7, 1)  	// R7 is the number of tests we're past
+	MOVE(R1, R6)	// (list 42 17)
+	CALL(FP_alt, LIST_REST) // ought to get our list with 17, here, THE SAME OBJECT
+	CMP(R1, R5)	// compare address from "rest" with address of our list with 17
+	BZ(OK_7)	//   skipping to the next "OK" point if they are equal
+	CALL(FP_alt, TESTING_ERROR)
+	LABEL(OK_7)
+
+	INC(R7, 1)  	// R7 is the number of tests we're past
+	MOVE(R1, R6)	// (list 42 17)
+	CALL(FP_alt, LIST_REST)  // ought to get our list with 17, here, THE SAME OBJECT
+	CALL(FP_alt, LIST_FIRST) // ought to get 17, in that case
+	SET(Rt, 17)
+	CMP(R1, Rt)
+	BZ(OK_8)	//   skipping to the next "OK" point if they are equal
+	CALL(FP_alt, TESTING_ERROR)
+	LABEL(OK_8)
+
+	INC(R7, 1)  	// R7 is the number of tests we're past
+	MOVE(R1, R6)	// (list 42 17)
+	CALL(FP_alt, LIST_REST)  // ought to get our list with 17, here, THE SAME OBJECT
+	CALL(FP_alt, LIST_REST)  // ought to get empty list, in that case
+	CALL(FP_alt, LIST_EMPTY)
+	FLAGS(R1)
+	BNZ(OK_9)	//   skipping to the next "OK" point if they EMPTY returns true
+	CALL(FP_alt, TESTING_ERROR)
+	LABEL(OK_9)
+
+	INC(R7, 1)  	// R7 is the number of tests we're past
+	MOVE(R1, R6)
+	SET(R2, 17)
+	CALL(FP_alt, LIST_CONTAINS)  // add LIST_CONTAINS HERE TO TEST // test function in ListHelpers.hera
+	SET(Rt, 1)
+	CMP(R1, Rt)
+	BZ(OK_10)	//   skipping to the next "OK" point
+	CALL(FP_alt, TESTING_ERROR)
+	LABEL(OK_10)
+
+    INC(R7, 1)  	// R7 is the number of tests we're past
+    MOVE(R1, R6)
+    SET(R2, 173)
+    CALL(FP_alt, LIST_CONTAINS)  // add LIST_CONTAINS HERE TO TEST // test function in ListHelpers.hera
+    SET(Rt, 0)
+    CMP(R1, Rt)
+    BZ(OK_11)	//   skipping to the next "OK" point
+    CALL(FP_alt, TESTING_ERROR)
+    LABEL(OK_11)
+
+    INC(R7, 1)  	// R7 is the number of tests we're past
+    MOVE(R1, R6)
+    CALL(FP_alt, LIST_LENGTH)  // add LIST_CONTAINS HERE TO TEST // test function in ListHelpers.hera
+    SET(Rt, 2)
+    CMP(R1, Rt)
+    BZ(OK_12)	//   skipping to the next "OK" point
+    CALL(FP_alt, TESTING_ERROR)
+    LABEL(OK_12)
+
+     INC(R7, 1)  	// R7 is the number of tests we're past
+            MOVE(R1, R6)
+            SET(R2, 42)
+            CALL(FP_alt, LIST_INDEX)  // add LIST_INDEX HERE TO TEST // test function in ListHelpers.hera
+            SET(Rt, 0)
+            CMP(R1, Rt)
+            //print_reg(R1)
+            BZ(OK_13)	//   skipping to the next "OK" point
+            CALL(FP_alt, TESTING_ERROR)
+            LABEL(OK_13)
+	
+	//print success!
+	SET(r1, success_message)
+	CALL(FP_alt, print)
+
+	SET(R1, list_output_message)
+	CALL(FP_alt, print)
+	MOVE(R1, R6)
+	CALL(FP_alt, LIST_DISPLAY_CODE)
+	
+	//be sure to skip over the function that prints error messages!
+	BR(AFTER_TESTING_ERROR_FUNCTION)
+
+// The function below prints an error message and the number of the test
+// It stops the program unless the HALT line is commented out
+LABEL(TESTING_ERROR)
+    // mimimum standard "preamble" for a function that calls other functions:
+    //   save PC_ret and FP_alt (as per Figure 7.9 of HERA docs v. 2.4.0)
+    INC(SP, 2)
+    STORE(PC_ret, 0,FP)
+    STORE(FP_alt, 1,FP)
+    SET(r1, error_message)
+    CALL(FP_alt, print)
+    MOVE(r1, r7)
+    CALL(FP_alt, printint)
+
+    // Comment out the next two lines to run all tests and print multiple errors
+    SET(R1, 2)
+    CALL(FP_alt, exit)
+
+    // mimimum standard "postamble" for a function that calls other functions:
+    //   restore PC_ret and FP_alt (as per Figure 7.9 of HERA docs v. 2.4.0)
+    LOAD(PC_ret, 0,FP)
+    LOAD(FP_alt, 1,FP)
+    DEC(SP, 2)
+RETURN(FP_alt, PC_ret)
+
+     LABEL(AFTER_TESTING_ERROR_FUNCTION)

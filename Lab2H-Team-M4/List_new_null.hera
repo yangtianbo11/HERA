@@ -1,0 +1,6 @@
+// Created by Dave W, in the starter files
+
+// Equivalent to (list): build an empty list
+LABEL(NEW_NULL_LIST)
+    SET(R1, 0)
+RETURN(FP_alt, PC_ret)

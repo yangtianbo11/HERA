@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/Algorithms_C__.dir/main.cc.o CMakeFiles/Algorithms_C__.dir/stringAnd_HOF_Examples.cc.o CMakeFiles/Algorithms_C__.dir/factorial.cc.o CMakeFiles/Algorithms_C__.dir/fibonacci.cpp.o  -o Algorithms_C__.exe -Wl,--out-implib,libAlgorithms_C__.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

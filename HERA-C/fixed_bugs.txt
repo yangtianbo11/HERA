@@ -1,0 +1,118 @@
+
+Welcome to the HERA-C HERA 2.4.0 simulator, October 2018 edition.
+  Please report bugs to davew@cs.haverford.edu
+
+Starting HERA program at HERA_main() ...
+
+*********************** Flag problems with ASL ******************
+
+LSL(0x8000) should give us 0 with carry; overflow should not have changed (from false):
+           R1 = 0x0000 = 00 = 0
+Flags: carry-block=TRUE  C=TRUE  V=FALSE Z=TRUE  S=FALSE
+
+
+ASL(0x8000) should give us 0 with carry and overflow:
+           R1 = 0x0000 = 00 = 0
+Flags: carry-block=TRUE  C=TRUE  V=TRUE  Z=TRUE  S=FALSE
+For reference, that is defined to be the same as ADD:
+           R1 = 0x0000 = 00 = 0
+Flags: carry-block=TRUE  C=TRUE  V=TRUE  Z=TRUE  S=FALSE
+
+
+LSL(0x8000) should give us 0 with carry; overflow should not have changed (from true):
+           R1 = 0x0000 = 00 = 0
+Flags: carry-block=TRUE  C=TRUE  V=TRUE  Z=TRUE  S=FALSE
+
+
+ASL(-21) should give us -42 with carry but not overflow:
+           R1 = 0xffd6 = 0177726 = -42 = 65494
+Flags: carry-block=TRUE  C=TRUE  V=FALSE Z=FALSE S=TRUE 
+For reference, that is defined to be the same as ADD:
+           R1 = 0xffd6 = 0177726 = -42 = 65494
+Flags: carry-block=TRUE  C=TRUE  V=FALSE Z=FALSE S=TRUE 
+
+
+ASL(0x3f20) should give us 0x7e40 with neither carry nor overflow:
+           R1 = 0x7e40 = 077100 = 32320
+Flags: carry-block=TRUE  C=FALSE V=FALSE Z=FALSE S=FALSE
+For reference, that is defined to be the same as ADD:
+           R1 = 0x7e40 = 077100 = 32320
+Flags: carry-block=TRUE  C=FALSE V=FALSE Z=FALSE S=FALSE
+
+
+ASL(0x7f20) should give us 0xfe40 with overflow but not carry:
+           R1 = 0xfe40 = 0177100 = -448 = 65088
+Flags: carry-block=TRUE  C=FALSE V=TRUE  Z=FALSE S=TRUE 
+For reference, that is defined to be the same as ADD:
+           R1 = 0xfe40 = 0177100 = -448 = 65088
+Flags: carry-block=TRUE  C=FALSE V=TRUE  Z=FALSE S=TRUE 
+
+
+ASL(0xbf20) should give us 0x7e40 with both carry and overflow:
+           R1 = 0x7e40 = 077100 = 32320
+Flags: carry-block=TRUE  C=TRUE  V=TRUE  Z=FALSE S=FALSE
+For reference, that is defined to be the same as ADD:
+           R1 = 0x7e40 = 077100 = 32320
+Flags: carry-block=TRUE  C=TRUE  V=TRUE  Z=FALSE S=FALSE
+
+
+*********************** Flag problems with DEC ******************
+
+SUB 2-2 should give 0, with neither S nor V, and with Z _and_C_ (no borrow)
+           R3 = 0x0000 = 00 = 0
+Flags: carry-block=TRUE  C=TRUE  V=FALSE Z=TRUE  S=FALSE
+DEC 2-2 should give 0, with neither S nor V, and with Z _and_C_ (no borrow)
+           R1 = 0x0000 = 00 = 0
+Flags: carry-block=TRUE  C=TRUE  V=FALSE Z=TRUE  S=FALSE
+
+SUB 2-1 should give 1, with neither S nor V, nor Z _and_C_ (no borrow)
+           R3 = 0x0001 = 01 = 1
+Flags: carry-block=TRUE  C=TRUE  V=FALSE Z=FALSE S=FALSE
+DEC 2-1 should give 1, with neither S nor V, nor Z _and_C_ (no borrow)
+           R1 = 0x0001 = 01 = 1
+Flags: carry-block=TRUE  C=TRUE  V=FALSE Z=FALSE S=FALSE
+
+SUB 2-3 should give -1, with neither Z nor V, and with S and _NOT_C_ (for borrow)
+           R3 = 0xffff = 0177777 = -1 = 65535
+Flags: carry-block=TRUE  C=FALSE V=FALSE Z=FALSE S=TRUE 
+DEC 2-3 should give 0, with neither Z nor V, and with S and _NOT_C_ (for borrow)
+           R1 = 0xffff = 0177777 = -1 = 65535
+Flags: carry-block=TRUE  C=FALSE V=FALSE Z=FALSE S=TRUE 
+
+***********************    Try each behaviour of multiply    ******************
+
+Flags should all be off now, right?
+Flags: carry-block=FALSE C=FALSE V=FALSE Z=FALSE S=FALSE
+           R3 = 0x6100 = 060400 = 24832
+           R4 = 0x2a70 = 025160 = 10864
+C computes 28673 * 24832 as 712007936, which == 712007936, i.e., 0x1000 * R4 + unsigned-interpretation(R3)
+           R3 = 0xd950 = 0154520 = -9904 = 55632
+           R4 = 0x25bf = 022677 = 9663
+C computes 30000 * 21111 as 633330000, which == 633330000, i.e., 0x1000 * R4 + unsigned-interpretation(R3)
+           R3 = 0x0001 = 01 = 1
+           R4 = 0xcf00 = 0147400 = -12544 = 52992
+C computes 28673 * -28671 as -822083583, which == -822083583, i.e., 0x1000 * R4 + unsigned-interpretation(R3)
+           R3 = 0x1001 = 010001 = 4097
+           R4 = 0x37ff = 033777 = 14335
+C computes -32767 * -28671 as 939462657, which == 939462657, i.e., 0x1000 * R4 + unsigned-interpretation(R3)
+
+***********************  Checking Arthur's list of requests  ******************
+
+SUB 4-2 (- borrow) should give 1 and C=True (no borrow)
+           R3 = 0x0001 = 01 = 1
+Flags: carry-block=FALSE C=TRUE  V=FALSE Z=FALSE S=FALSE
+ADD 2+2 should now give 5, due to C=True, and leave all flags FALSE
+           R4 = 0x0005 = 05 = 5
+Flags: carry-block=FALSE C=FALSE V=FALSE Z=FALSE S=FALSE
+
+ASR 0x8001 should now give 0xC000, ignoring incoming carry, and have flags c=1 z=0 s=1 v unchanged.
+          R10 = 0xc000 = 0140000 = -16384 = 49152
+Flags: carry-block=FALSE C=TRUE  V=FALSE Z=FALSE S=TRUE 
+
+***********************  Requests from Siddharth and other faculty  ******************
+
+flags should be BcvZS
+Flags: carry-block=TRUE  C=FALSE V=FALSE Z=TRUE  S=TRUE 
+flags should be BcVzs
+Flags: carry-block=TRUE  C=FALSE V=TRUE  Z=FALSE S=FALSE
+

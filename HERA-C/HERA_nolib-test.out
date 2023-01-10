@@ -1,0 +1,24 @@
+
+Welcome to the HERA-C HERA 2.4.0 simulator, October 2018 edition.
+  Please report bugs to davew@cs.haverford.edu
+
+Starting HERA program at HERA_main() ...
+
+
+
+HERA program is done.
+Registers:
+           r1 = 0x0006 = 06 = 6
+           r2 = 0x0007 = 07 = 7
+           r3 = 0x002a = 052 = 42 = '*'
+           r4 = 0x0000 = 00 = 0
+           r5 = 0x0000 = 00 = 0
+           r6 = 0x0000 = 00 = 0
+           r7 = 0x0000 = 00 = 0
+           r8 = 0x0000 = 00 = 0
+           r9 = 0x0000 = 00 = 0
+          r10 = 0x0000 = 00 = 0
+
+Flags: carry-block=TRUE  C=FALSE V=FALSE Z=FALSE S=FALSE
+
+Stack is (empty)

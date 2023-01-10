@@ -1,0 +1,31 @@
+                    FIRST                FOLLOW             EPS
+E                   number               number             false
+                    boolean              boolean
+                    identifier           identifier
+                    (                    (
+                                         +
+                                         -
+                                         *
+                                         =
+                                         <=
+                                         >=
+                                         if
+                                         let*
+                                         )
+E_IN_PARENS         +                    number              false
+                    -                    boolean
+                    *                    identifier
+                    =                    (
+                    <=
+                    >=
+                    identifier
+                    if
+                    let*
+OP                  +                    number               false
+                    -
+                    *
+                    =
+                    <=
+                    >=
+VARIABLES           (                    identifier            true
+                                         )

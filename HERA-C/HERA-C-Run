@@ -1,0 +1,123 @@
+#!/bin/csh -f
+#
+#  HERA-C-Run script, for command-line execution of HERA programs
+#   Requires a system C++ compiler
+#   Requires libraries, if you use libraries.
+#
+#  The default variable settings assume it is installed below /home/courses/lib.
+#  If you don't install it there, just set HERA_C_DIR to the install location.
+#
+#  E.g., instead of "HERA-C-Run myfile.cc", if you installed in /home/whereever/
+#        write "HERA_C_DIR=/home/whereever ${HERA_C_DIR}/HERA-C-Run myfile.cc".
+#
+#  If you want to be able to just type "HERA-C-Run" (for convenience, or
+#   to make scripts that work in the QuaCS lab or your computer), you can
+#   create your own script, also called HERA-C-Run, that does that command above.
+#  (an explanation of scripting is beyond the scope of this document.)
+#  
+#  For a local install, e.g., on your laptop, you'll also need to get libraries you'll need
+#   Dave's implementation of the extended tiger standard library for HERA is in the
+#   HERA-lib repo, at /home/davew/.git-teaching/HERA-lib on the QuaCS lab computers
+#  You can connect these to HERA_C_Run with link/alias named "lib" in the folder of HERA_C_Run,
+#   or by setting HERA_C_LIB_DIR on the command-line, just before (or after) HERA_C_DIR.
+#
+
+if (${#argv} == 0) then
+    echo "Usage: $0 [-gd] hera-program.hera"
+    exit
+endif
+
+######################   ENVIRONMENT PARAMETERS   ########################
+
+# HERA_C_DIR, typically the git repo for HERA-C-Run, is where we find core HERA stuff,
+#             e.g. HERA.h, HERA-print.h, and the HERA-typical-preamble.cc file
+
+if (${?HERA_C_INIT} == 0) then
+    set HERA_C_INIT=""
+endif
+
+if (${?HERA_C_DIR} == 0) then
+    set HERA_C_DIR=/home/courses/lib/HERA-C/	# Do not edit this for local install; see above
+endif
+# HERA_C_LIB_DIR, typically HLIB in the git repo for HERA-lib, where we find library code,
+#                 e.g., Tiger-stdlib or whatever other library we want to use
+if (${?HERA_C_LIB_DIR} == 0) then
+    set HERA_C_LIB_DIR=${HERA_C_DIR}/lib/	# Do not edit this for local install; see above
+endif
+# HERA_C_CPP_DEFS is anything else we want to pass on to the C++ compiler
+if (${?HERA_C_CPP_DEFS} == 0) then
+    set HERA_C_CPP_DEFS=""
+endif
+
+if (! -d ${HERA_C_DIR}) then
+    echo "Can't open HERA_C_DIR ''${HERA_C_DIR}'' ... for a local install, see comments at the top of $0" > /dev/stderr
+    exit 2
+endif
+if (! -d ${HERA_C_LIB_DIR}) then
+    echo " " > /dev/stderr
+    echo " *** Can't open HERA_C_LIB_DIR ''${HERA_C_LIB_DIR}'', #includes of e.g. tiger library may fail ***" > /dev/stderr
+    echo " ***   ... for a local install, see comments at the top of $0  ***" > /dev/stderr
+    echo " " > /dev/stderr
+endif
+
+# DURING TRANSITIONS BETWEEN VERSIONS, ADD A WARNING FOR A WHILE...
+if (${?WARN_HERA_2_3_DIFFS} == 0) then
+    set WARN_HERA_2_3_DIFFS=""
+endif
+
+################### END OF ENVIRONMENT PARAMETERS ########################
+
+
+set stamp = "tmp-${LOGNAME}-`date +%s`"
+set exe   = "/tmp/HERA-C-Run-${stamp}.exe"  # using /tmp makes #include "..." fail, but using "." makes other includes fail sometimes ... possibly the -IC thing will help? I think so :-)
+set src   = "/tmp/HERA-C-Run-${stamp}.cc"
+set include_lib = "^ *#include .*Tiger-stdlib-.*"
+
+set debug_flags=""
+set instructions="sleep 0"
+if ("${#argv}" == 2) then
+    if ("${1}" == "-g" || "${1}" == "-d") then
+	set debug_flags="-g"
+	set instructions="echo @Starting gdb ${exe}; type quit to quit, or help for help (line numbers correspond to lines in ${src}) @@@"
+	shift
+    else
+	echo "Usage: $0 [-g] hera-program.hera # or hera-program.cc"
+	exit
+    endif
+endif
+
+if (${?HERA_C_TIME_LIMIT} == 0) then
+    set time_limit = 16
+else
+    set time_limit = "${HERA_C_TIME_LIMIT}"
+endif
+
+set NOLIB = ""
+egrep "HERA.h" $1 >& /dev/null
+if ("${status}" == 0) then
+    cp $1 ${src}
+else
+    egrep "${include_lib}" $1 >& /dev/null
+    if ("${status}" == 0) then
+    	set NOLIB = "-DHERA_C_NO_LIB_NEEDED=1"
+    endif
+    # those blank lines avoid problems with no-newline files in various places
+    (cat ${HERA_C_DIR}/HERA-typical-preamble.cc ; echo "@" ; cat $1 ; echo "@" ; cat ${HERA_C_DIR}/HERA-typical-postamble.cc ; echo "@") | tr @ '\n' > ${src}
+endif
+
+# Note that -IC seems to put the directory in which the include'ing file resides into the include search path :-)
+#   (thanks, Timandi Vlad: https://stackoverflow.com/questions/7581408/including-a-header-file-from-another-directory)
+# But now gcc (a) doesn't like that for "" incluled, and (b) says that's deprecated, we should use -iquote and -isystem
+
+g++ -w -iquote `dirname "$1"` -isystem ${HERA_C_LIB_DIR} -isystem ${HERA_C_DIR} ${NOLIB} ${WARN_HERA_2_3_DIFFS} ${HERA_C_CPP_DEFS} ${debug_flags} ${HERA_C_INIT} ${src} -o ${exe}
+
+
+if ("${status}" == 0) then # compile succueeded
+    if ("${debug_flags}" == "") then
+	(${instructions} | tr @ '\n' ; limit cputime ${time_limit}; ${exe})
+    else
+    	(${instructions} | tr @ '\n' ; limit cputime ${time_limit}; gdb -iex 'add-auto-load-safe-path .' ${exe})
+    endif
+endif
+
+rm ${exe} ${src} >& /dev/null

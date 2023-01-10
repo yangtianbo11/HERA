@@ -1,0 +1,31 @@
+
+Welcome to the HERA-C HERA 2.4.0 simulator, October 2018 edition.
+  Please report bugs to davew@cs.haverford.edu
+
+Starting HERA program at HERA_main() ...
+
+Just did two double-precision adds into R1/R2:
+           R1 = 0x000f = 017 = 15
+           R2 = 0x4240 = 041100 = 16960
+Just did double-precision subtract into R7/R8:
+           R7 = 0xfff0 = 0177760 = -16 = 65520
+           R8 = 0xbdc0 = 0136700 = -16960 = 48576
+The double-precision sum is 15 16960
+The double-precision difference is -16 -16960
+
+HERA program is done.
+Registers:
+           r1 = 0xbdc0 = 0136700 = -16960 = 48576
+           r2 = 0x4240 = 041100 = 16960
+           r3 = 0x0000 = 00 = 0
+           r4 = 0x000f = 017 = 15
+           r5 = 0x4240 = 041100 = 16960
+           r6 = 0xbdc0 = 0136700 = -16960 = 48576
+           r7 = 0xfff0 = 0177760 = -16 = 65520
+           r8 = 0xbdc0 = 0136700 = -16960 = 48576
+           r9 = 0x0000 = 00 = 0
+          r10 = 0x000f = 017 = 15
+
+Flags: carry-block=FALSE C=FALSE V=FALSE Z=FALSE S=TRUE 
+
+Stack is (empty)

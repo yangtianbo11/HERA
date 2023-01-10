@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/VariableSemanticsExample.dir/main.cpp.o  -o VariableSemanticsExample.exe -Wl,--out-implib,libVariableSemanticsExample.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

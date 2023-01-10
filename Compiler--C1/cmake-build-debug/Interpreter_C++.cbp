@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Interpreter_C++"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Compiler_C++">
+				<Option output="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Compiler_C++.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/../HaverfordCS/include"/>
+					<Add directory="/home/courses/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/../../../../lib/../include/w32api"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 Compiler_C++"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Compiler_C++/fast">
+				<Option output="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Compiler_C++.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/../HaverfordCS/include"/>
+					<Add directory="/home/courses/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++/x86_64-pc-cygwin"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include/c++/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/10/../../../../lib/../include/w32api"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 Compiler_C++/fast"/>
+					<CompileFile command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j4 -f &quot;/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/AST.cc">
+			<Option target="Compiler_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/AST.h">
+			<Option target="Compiler_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/ContextInfo.cc">
+			<Option target="Compiler_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/ContextInfo.h">
+			<Option target="Compiler_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/Dictionary.cpp">
+			<Option target="Compiler_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/Dictionary.h">
+			<Option target="Compiler_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/generateHERA.cc">
+			<Option target="Compiler_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/main.cc">
+			<Option target="Compiler_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/parser.cc">
+			<Option target="Compiler_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/parser.h">
+			<Option target="Compiler_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/scanner-regexp.cc">
+			<Option target="Compiler_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/scanner-regexp.h">
+			<Option target="Compiler_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/scanner.cc">
+			<Option target="Compiler_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/scanner.h">
+			<Option target="Compiler_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/scannerDemo.cc">
+			<Option target="Compiler_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/scannerDemo.h">
+			<Option target="Compiler_C++"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/yangt/STeam/Tianbo/Tianbo/Haverford/ComputerScience/CS245S/Compiler--C/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,8 @@
+//(* 3 (getint)) <EOF>
+
+CBON()
+SET(R10, 3)
+MOVE(FP_alt, SP)
+CALL(FP_alt,getint)
+MOVE(R9, R1)
+MUL(R10, R10,R9)

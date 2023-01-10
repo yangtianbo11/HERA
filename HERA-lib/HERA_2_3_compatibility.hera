@@ -1,0 +1,34 @@
+/*
+ * Compatibility definitions to run HERA 2_3 code in HERA 2_4, IF...
+ *   * the code always had carry-block turned on
+ *   * the code did not care about the high 16 bits that MULT put in Rt
+ *   * the code did not care about the exact settings of flags after MULT
+ *   * the code did not depend on exactly which register was Rt (was R13, now R11)
+ *   * the code did not #define or use CONSTANT/LABEL/DLABEL to define names that changed, e.g.
+ *       CBON CCBOFF CON COFF SAVEF RSTRF FON FOFF FSET4 FSET4
+ *
+ *   * probably some other things, report oversights to Dave W <davew@cs.haverford.edu>
+ *
+ *  To use this file, put
+ *    #include "HERA_2_3_compatibility.hera"
+ *  right below
+ *    void HERA_main()
+ *    {
+ *  in your HERA_main.cc (or other main program) file.
+ *  (and make sure that this file's folder, probably /home/courses/lib/HERA-C/lib, is on the include path, if not using HERA-C/Hassem).
+ *
+ *  For reference, see HERA errata/release-notes document at
+ *     https://docs.google.com/document/d/1fhgaAMjyWz0MAoe1fssMR97LQgQUDCQFsnaQhA5r_Io
+ */
+
+#define MULT(d, a,b)  MUL(d, a,b)  /* Let's hope CB is set, and we didn't care about higher 16 bits */
+
+#define SETCB()  CBON()
+#define CLCCB()  CCBOFF()
+#define SETC()   CON()
+#define CLRC()   COFF()
+#define SETF(f)  FON(f)
+#define CRLF(f)  FOFF(f)
+#define FSAVE(r) SAVEF(r)
+#define FRSTR(r) RSTRF(r)
+

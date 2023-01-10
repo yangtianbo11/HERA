@@ -1,0 +1,55 @@
+***** Finally, the calculator program (you'll need to write this, too):
+ C> ^
+thanks for entering the non-integer token ^, but I don't quite know what to do with it...
+I'll keep discarding input until the next ';'
+;
+ C> 1 + 1 ;
+thanks for entering the integer 1
+thanks for entering +
+thanks for entering the integer 1
+ C> 2
+^ + 2 ;
+thanks for entering the integer 2
+thanks for entering +
+thanks for entering the integer 2
+4
+ C> 4 + ^
+thanks for entering the integer 4
+thanks for entering +
+thanks for entering the integer 4
+8
+;
+ C> ^ == 8 ;
+thanks for entering the integer 8
+thanks for entering ==
+thanks for entering the integer 8
+ C> True
+^ <= 0 ;
+thanks for entering the integer 1
+False
+thanks for entering <=
+thanks for entering the integer 0
+ C> ?
+List of all variables currently defined:
+^: 0
+^: 1
+^: 8
+^: 4
+^: 2
+;
+ C> var i ^ ;
+Please set a new variable and its corresponding value:
+thanks for entering i
+thanks for entering the integer 0
+ C> i == 0 ;
+thanks for entering the integer 0
+thanks for entering ==
+thanks for entering the integer 0
+ C> True
+:= ^ 3 ;
+Please name an existing variable and its new value:
+thanks for entering ^
+Sorry it didn't work out too well
+Sorry, invalid variable name, calculator shutting down
+
+Process finished with exit code 1

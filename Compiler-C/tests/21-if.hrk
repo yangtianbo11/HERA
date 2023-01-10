@@ -1,0 +1,8 @@
+//(if #t 2 3) <EOF>
+CBON()
+SET(R10, 1)
+SET(R10, 2)
+BR(END)
+LABEL(ELSE)
+SET(R10, 3)
+LABEL(END)

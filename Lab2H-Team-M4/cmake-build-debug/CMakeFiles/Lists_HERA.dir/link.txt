@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g -Wl,--enable-auto-import CMakeFiles/Lists_HERA.dir/HERA_main.cpp.o -o Lists_HERA.exe -Wl,--out-implib,libLists_HERA.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

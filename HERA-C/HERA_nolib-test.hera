@@ -1,0 +1,6 @@
+	CBON()
+
+	SET(R1, 6)
+	SET(R2, 7)
+	MUL(R3, R1,R2)
+

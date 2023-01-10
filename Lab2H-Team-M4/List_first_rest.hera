@@ -1,0 +1,19 @@
+//
+// This file should be created as a team, when the team is working together
+//
+// One team member should
+//   Do a git pull (as you always should, when starting)
+//   Edit this file as directed by the group
+//   Do a commit any time something good happens (or other times)
+//   Do a git push when you finish the group work session
+//    (after that, when the others do a "git pull", they should see the changes
+//
+
+LABEL(LIST_FIRST)
+    LOAD(R1, 0, R1)
+RETURN(FP_alt, PC_ret)
+
+LABEL(LIST_REST)
+    LOAD(R1, 1, R1)
+RETURN(FP_alt, PC_ret)
+

@@ -1,0 +1,112 @@
+// You should #include either this version or the original, not both.
+//
+//  This version is careful about the "caller save" register approach,
+//  saving all "live" registers before each call
+
+
+// ListHelpers.hera
+//
+// Things beyond the core ADT, e.g. "length", "list-display", etc.
+//
+// Follow same register conventions as List.hera: 1..3 parameters, 8..11 temporaries
+// Indentation: function boundaries are left-justified; local control is half-indented
+// 
+// NOTE: code for the _functions_ goes here; data go in ListHelpers-data.hera
+//
+
+// Equivalent to Racket's length function
+LABEL(LIST_LENGTH)  // if this gives an error, be sure you don't #include both versions of ListHelpers
+    // mimimum standard "preamble" for a function that calls other functions:
+    //   save PC_ret and FP_alt (as per Figure 7.9 of HERA docs v. 2.4.0)
+    INC(SP, 4)  // two "get home again" results, plus we'll save R2 (current list) and R3 (length)
+    STORE(PC_ret, 0,FP)
+    STORE(FP_alt, 1,FP)
+
+    // body of "length" function:
+    MOVE(R2, R1)	// R2 will be "current" list
+    SET(R3, 0)   	// R3 will be the result, start at 0
+  LABEL(LIST_LENGTH_CHECK_FOR_EMPTY)
+    MOVE(R1, R2)	// pass current list, i.e., R2 as a parameter to "empty?"
+    MOVE(FP_alt, SP)    // standard call sequence, start with new frame above this one
+         STORE(R2, 2,FP)  // Save R2 before the call
+         STORE(R3, 3,FP)  // Save R3 before the call
+    CALL(FP_alt, LIST_EMPTY)
+         LOAD(R2, 2,FP)  // Restore the R2 that we saved before the call
+         LOAD(R3, 3,FP)  // Restore the R3 that we saved before the call
+    FLAGS(R1)		// if result is true, i.e. nonzero, the "Z" flag will be off
+  BNZ(LIST_LENGTH_DONE)
+    INC(R3, 1)
+    MOVE(R1, R2)	// pass current list, i.e., R2 as a parameter to "rest"
+         STORE(R3, 3,FP)  // Save R3 before the call ... DON'T SAVE R2 SINCE WE'RE UPDATING IT
+    MOVE(FP_alt, SP)    // standard call sequence, start with new frame above this one
+    CALL(FP_alt, LIST_REST)
+    MOVE(R2, R1)  	// copy the result of "rest" into R2, the current list
+         LOAD(R3, 3,FP)  // Restore the R3 that we saved before the call
+  BR(LIST_LENGTH_CHECK_FOR_EMPTY)
+  LABEL(LIST_LENGTH_DONE)
+    MOVE(R1, R3)	// copy the count from R3 into R1, establishing the return value
+
+    // mimimum standard "postamble" for a function that calls other functions:
+    //   restore PC_ret and FP_alt (as per Figure 7.9 of HERA docs v. 2.4.0)
+    LOAD(PC_ret, 0,FP)
+    LOAD(FP_alt, 1,FP)
+    DEC(SP, 4)  // match the INC at the start
+RETURN(FP_alt, PC_ret)
+
+
+// Use calls to tiger standard library functions PRINT and PRINTINT,
+//   to print a list in Scheme/Racket format, e.g., (list 2 3 5 7 11)
+LABEL(LIST_DISPLAY_CODE)
+    // mimimum standard "preamble" for a function that calls other functions:
+    //   save PC_ret and FP_alt (as per Figure 7.9 of HERA docs v. 2.4.0)
+    INC(SP, 3)
+    STORE(PC_ret, 0,FP)
+    STORE(FP_alt, 1,FP)
+
+    // body of "list-display-code" function:
+    MOVE(R2, R1)	// R2 will be "current" list
+    SET(R1, LIST_DISPLAY_CODE_START)
+         STORE(R2, 2,FP)  // Save R2 before the call
+    MOVE(FP_alt, SP)    // standard call sequence, start with new frame above this one
+    CALL(FP_alt, PRINT)
+         LOAD(R2, 2,FP)  // Restore the R2 that we saved before the call
+    
+  LABEL(LIST_DISPLAY_CODE_CHECK_FOR_EMPTY)
+    MOVE(R1, R2)	// pass current list, i.e., R2 as a parameter to "empty?"
+         STORE(R2, 2,FP)  // Save R2 before the call
+    MOVE(FP_alt, SP)    // standard call sequence, start with new frame above this one
+    CALL(FP_alt, LIST_EMPTY)
+         LOAD(R2, 2,FP)  // Restore the R2 that we saved before the call
+    FLAGS(R1)		// if result is true, i.e. nonzero, the "Z" flag will be off
+  BNZ(LIST_DISPLAY_CODE_DONE)
+    SET(R1, LIST_DISPLAY_CODE_SEPARATOR)
+         STORE(R2, 2,FP)  // Save R2 before the call
+    MOVE(FP_alt, SP)    // standard call sequence, start with new frame above this one
+    CALL(FP_alt, PRINT)
+         LOAD(R2, 2,FP)  // Restore the R2 that we saved before the call
+    MOVE(R1, R2)	// pass current list, i.e., R2 as a parameter to "first"
+//        STORE(R2, 2,FP)  // Save R2 before the call  ... not needed, we just loaded it
+    MOVE(FP_alt, SP)    // standard call sequence, start with new frame above this one
+    CALL(FP_alt, LIST_FIRST)
+    MOVE(FP_alt, SP)    // standard call sequence, start with new frame above this one
+    CALL(FP_alt, PRINTINT)
+         LOAD(R2, 2,FP)  // Restore the R2 that we saved before the call
+
+	 // Don't save R2 here because the whole point is to change it
+    MOVE(R1, R2)	// pass current list, i.e., R2 as a parameter to "rest"
+    MOVE(FP_alt, SP)    // standard call sequence, start with new frame above this one
+    CALL(FP_alt, LIST_REST)
+    MOVE(R2, R1)  	// copy the result of "rest" into R2, the current list
+  BR(LIST_DISPLAY_CODE_CHECK_FOR_EMPTY)
+
+  LABEL(LIST_DISPLAY_CODE_DONE)
+    SET(R1, LIST_DISPLAY_CODE_END)
+    MOVE(FP_alt, SP)    // standard call sequence, start with new frame above this one
+    CALL(FP_alt, PRINT)
+
+    // mimimum standard "postamble" for a function that calls other functions:
+    //   restore PC_ret and FP_alt (as per Figure 7.9 of HERA docs v. 2.4.0)
+    LOAD(PC_ret, 0,FP)
+    LOAD(FP_alt, 1,FP)
+    DEC(SP, 3)
+RETURN(FP_alt, PC_ret)

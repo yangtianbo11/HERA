@@ -1,0 +1,8 @@
+//(* 3 (exit)) <EOF>
+
+CBON()
+SET(R10, 3)
+MOVE(FP_alt, SP)
+CALL(FP_alt,exit)
+MOVE(R9, R1)
+MUL(R10, R10,R9)

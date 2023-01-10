@@ -1,0 +1,3 @@
+#include <Tiger-stdlib-stack-data.hera>
+DLABEL(TIGER_STDLIB_REG_UNIMPLEMENTED)
+TIGER_STRING("Error -- call to unimplemented function from Tiger-stdlib-reg.hera\n")

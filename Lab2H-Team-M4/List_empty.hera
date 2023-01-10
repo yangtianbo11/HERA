@@ -1,0 +1,14 @@
+//
+//  Editor of this file: Sam Silverman
+//   (others should contribute orally, but only one person commit it).
+//
+
+LABEL(LIST_EMPTY)
+    CMP(R1, R0) // comparing R1-R0
+    BNZ(listempty) // checking if zero flag is 0 or not. If not 0 then branch
+     SET(R1, 1) // return true that it is 0
+     BR(out) // branch to the other return value
+    LABEL(listempty)
+   SET(R1, 0) // Return false, hoping that we'll often be right if lists are often not empty
+   LABEL(out)
+   RETURN(FP_alt, PC_ret)

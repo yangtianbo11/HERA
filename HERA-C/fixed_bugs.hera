@@ -1,0 +1,197 @@
+// Agglomerated HERA bug fixes regression test
+// For a consistent-with-previous test, you should get no output from the command
+//    HERA_C_DIR=. WARN_HERA_2_3_DIFFS="" ./HERA-C-Run fixed_bugs.hera | sed -e '/Done with test suite/,$d' | diff fixed_bugs.txt -
+
+CBON()
+
+print("*********************** Flag problems with ASL ******************\n")
+
+SET(R2, 0b1000000000000000)  // 1 followed by fifteen 0's
+LSL(R1, R2)
+print("LSL(0x8000) should give us 0 with carry; overflow should not have changed (from false):")
+print_reg(R1)
+print_flags()
+print("\n")
+
+SET(R2, 0b1000000000000000)  // 1 followed by fifteen 0's
+ASL(R1, R2)
+print("ASL(0x8000) should give us 0 with carry and overflow:")
+print_reg(R1)
+print_flags()
+
+ADD(R1, R2,R2)
+print("For reference, that is defined to be the same as ADD:")
+print_reg(R1)
+print_flags()
+print("\n")
+
+SET(R2, 0b1000000000000000)  // 1 followed by fifteen 0's
+LSL(R1, R2)
+print("LSL(0x8000) should give us 0 with carry; overflow should not have changed (from true):")
+print_reg(R1)
+print_flags()
+print("\n")
+
+
+SET(R2, -21)
+ASL(R1, R2)
+print("ASL(-21) should give us -42 with carry but not overflow:")
+print_reg(R1)
+print_flags()
+ADD(R1, R2,R2)
+print("For reference, that is defined to be the same as ADD:")
+print_reg(R1)
+print_flags()
+print("\n")
+
+SET(R2, 0x3f20)
+ASL(R1, R2)
+print("ASL(0x3f20) should give us 0x7e40 with neither carry nor overflow:")
+print_reg(R1)
+print_flags()
+ADD(R1, R2,R2)
+print("For reference, that is defined to be the same as ADD:")
+print_reg(R1)
+print_flags()
+print("\n")
+
+SET(R2, 0x7f20)
+ASL(R1, R2)
+print("ASL(0x7f20) should give us 0xfe40 with overflow but not carry:")
+print_reg(R1)
+print_flags()
+ADD(R1, R2,R2)
+print("For reference, that is defined to be the same as ADD:")
+print_reg(R1)
+print_flags()
+print("\n")
+
+SET(R2, 0xbf20)
+ASL(R1, R2)
+print("ASL(0xbf20) should give us 0x7e40 with both carry and overflow:")
+print_reg(R1)
+print_flags()
+ADD(R1, R2,R2)
+print("For reference, that is defined to be the same as ADD:")
+print_reg(R1)
+print_flags()
+print("\n")
+
+print("*********************** Flag problems with DEC ******************\n")
+
+SET(R1, 2)
+SET(R2, 2)
+SUB(R3, R1,R2)
+print("SUB 2-2 should give 0, with neither S nor V, and with Z _and_C_ (no borrow)")
+print_reg(R3)
+print_flags()
+DEC(R1, 2)
+print("DEC 2-2 should give 0, with neither S nor V, and with Z _and_C_ (no borrow)")
+print_reg(R1)
+print_flags()
+print("")
+
+SET(R1, 2)
+SET(R2, 1)
+SUB(R3, R1,R2)
+print("SUB 2-1 should give 1, with neither S nor V, nor Z _and_C_ (no borrow)")
+print_reg(R3)
+print_flags()
+DEC(R1, 1)
+print("DEC 2-1 should give 1, with neither S nor V, nor Z _and_C_ (no borrow)")
+print_reg(R1)
+print_flags()
+print("")
+
+SET(R1, 2)
+SET(R2, 3)
+SUB(R3, R1,R2)
+print("SUB 2-3 should give -1, with neither Z nor V, and with S and _NOT_C_ (for borrow)")
+print_reg(R3)
+print_flags()
+DEC(R1, 3)
+print("DEC 2-3 should give 0, with neither Z nor V, and with S and _NOT_C_ (for borrow)")
+print_reg(R1)
+print_flags()
+print("")
+
+
+print("***********************    Try each behaviour of multiply    ******************\n")
+
+FSET5(0)							\
+print("Flags should all be off now, right?") print_flags()
+
+#define TESTPROD(MUL1, MUL2) \
+SET(R3, 0xdead)							\
+SET(R4, 0xbeef)							\
+SET(R1, MUL1) /* "SETLO and SETHI do not affect any flags */	\
+SET(R2, MUL2)							\
+FSET4(0)							\
+MUL(R3, R1,R2) /* should be the low word,  right? */		\
+FSET4(0x1)							\
+MUL(R4, R1,R2) /* should be the high word, right? */		\
+print_reg(R3)							\
+print_reg(R4)							\
+printf("C computes %d * %d as %d, which %s %d, i.e., 0x1000 * R4 + unsigned-interpretation(R3)\n", reg(R1), reg(R2), \
+	reg(R1)*reg(R2), \
+	(((reg(R1)*reg(R2)) == 65536*reg(R4)+ureg(R3)) ? "==" : " IS NOT EQUAL TO"), \
+	65536*reg(R4)+ureg(R3));
+// printf("R4,R3 should be =?= %6d * %6d, i.e., %d ==  %d (%d?)\n", MUL1, MUL2, (MUL1*MUL2), 65536*reg(R4)+reg(R3), 65536*ureg(R4)+ureg(R3)); \
+// printf("  in hex, thats =?= 0x%4x * 0x%4x, i.e., 0x%x == 0x%x (0x%x?)\n", MUL1, MUL2, (MUL1*MUL2), 65536*reg(R4)+reg(R3), 65536*ureg(R4)+ureg(R3));
+
+
+TESTPROD(0x7001, 0x6100)
+TESTPROD(30000, 21111)
+TESTPROD( 0x7001, -0x6fff) // 0x9001
+TESTPROD(-0x7fff, -0x6fff)
+
+print("\n***********************  Checking Arthur's list of requests  ******************\n")
+
+CCBOFF()
+SET(R1, 4)
+SET(R2, 2)
+SUB(R3, R1,R2)
+print("SUB 4-2 (- borrow) should give 1 and C=True (no borrow)")
+print_reg(R3)
+print_flags()
+ADD(R4, R2,R2)
+print("ADD 2+2 should now give 5, due to C=True, and leave all flags FALSE")
+print_reg(R4)
+print_flags()
+print("")
+
+
+// ASR(R10,R9). Since R9 is still 0x8001, this should set R10 to 0x8000, since it should ignore the carry flag. However, when I run HERA-C-Run, it gives me 0xc001.  Not only has it seemed to shift in the carry flag, it does not seem to have also shifted out the 1 at the end.
+// From the book: All shift operations modify s and z as appropriate for the value produced. For one-bit shifts, c becomes the bit shifted out; [v unchanged]
+SET(R9, 0x8001)
+CON()
+ASR(R10, R9)
+print("ASR 0x8001 should now give 0xC000, ignoring incoming carry, and have flags c=1 z=0 s=1 v unchanged.")
+print_reg(R10)
+print_flags()
+
+for(int i=-32768; i<=32767; i++) {
+  SET(Rt, i)
+  ASR(Rt, Rt)
+  if (reg(Rt) != ((i) >> 1)) {
+     printf("D'oh! %d %d %d\n", i, reg(Rt), ((i) >> 1));
+     HALT();
+  }
+  if (reg(Rt)*2 != i && reg(Rt)*2+1 != i) {
+     printf("D'oh! %d %d\n", i, reg(Rt));
+     HALT();
+  }
+}
+// printf("Yay\n");
+
+
+print("\n***********************  Requests from Siddharth and other faculty  ******************\n")
+
+FSET5(0x13) //v is 10011
+print("flags should be BcvZS")
+print_flags()
+FSET4(0x4) //v is 00100
+print("flags should be BcVzs")
+print_flags()
+
+print("\n***********************  Done with test suite  ******************\n")

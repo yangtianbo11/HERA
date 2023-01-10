@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../../HaverfordCS/include/logic.h
+assert.h
+-
+assert.h
+-
+sys/cdefs.h
+-
+assert.h
+-
+iostream
+-
+
+/cygdrive/c/Users/yangt/CLionProjects/AlgorithmsCPP/stringAnd_HOF_Examples.cc
+functional
+-
+string
+-
+iostream
+-
+logic.h
+-
+stringAnd_HOF_Examples.h
+/cygdrive/c/Users/yangt/CLionProjects/AlgorithmsCPP/stringAnd_HOF_Examples.h
+
+/cygdrive/c/Users/yangt/CLionProjects/AlgorithmsCPP/stringAnd_HOF_Examples.h
+string
+-
+

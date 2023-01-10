@@ -1,0 +1,10 @@
+// List-data.hera
+//
+//  Put _data_directives_ for lists, i.e. DLABEL, INTEGER, DSKIP, etc., here
+//
+// NOTE: Do _NOT_ put code/instructions, e.g. SET, ADD, BR, CALL, LABEL, etc. here
+//        (those go in List.hera)
+//
+
+DLABEL(unimplemented)
+LP_STRING("Sorry, this list function is not implemented")
